@@ -34,4 +34,6 @@ class PlanetsCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    @IBAction func unwindToPlanetsCollectionViewController(_ sender: UIStoryboardSegue) {}
 }

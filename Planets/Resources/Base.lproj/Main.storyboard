@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,11 +77,71 @@
                             <outlet property="delegate" destination="uQm-Ap-Xlx" id="ijZ-kQ-eso"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="e5h-XJ-IgO"/>
+                    <navigationItem key="navigationItem" id="e5h-XJ-IgO">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="ur2-fh-qez">
+                            <connections>
+                                <segue destination="sZa-lP-CMH" kind="presentation" identifier="showSettings" id="1bw-tA-SE0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Khz-J9-g1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1087" y="143"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="qHA-Km-7Sj">
+            <objects>
+                <viewController id="ntn-VV-tzd" customClass="SettingsViewController" customModule="Planets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OAj-F5-sbC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2iI-LW-Hn2">
+                                <rect key="frame" x="16" y="682" width="382" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Pluto a Planet:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeO-jj-XGh">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ut8-JR-r5t">
+                                        <rect key="frame" x="333" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="changeShouldShowPluto:" destination="ntn-VV-tzd" eventType="valueChanged" id="m2s-6c-5uu"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2iI-LW-Hn2" firstAttribute="leading" secondItem="kwt-jb-7G2" secondAttribute="leading" constant="16" id="U7r-df-EjH"/>
+                            <constraint firstItem="2iI-LW-Hn2" firstAttribute="bottom" secondItem="kwt-jb-7G2" secondAttribute="bottom" constant="-100" id="WSn-wW-FWo"/>
+                            <constraint firstItem="2iI-LW-Hn2" firstAttribute="centerX" secondItem="OAj-F5-sbC" secondAttribute="centerX" id="f6Q-tq-nSb"/>
+                            <constraint firstItem="kwt-jb-7G2" firstAttribute="trailing" secondItem="2iI-LW-Hn2" secondAttribute="trailing" constant="16" id="oME-bg-Lq8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kwt-jb-7G2"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cZ7-gP-Jm1"/>
+                        <barButtonItem systemItem="done" id="vxZ-MO-hEV">
+                            <connections>
+                                <segue destination="314-pr-eb2" kind="unwind" unwindAction="unwindToPlanetsCollectionViewController:" id="qhZ-ZM-hJ2"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Settings" id="4dV-Eb-cb9"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="shouldShowPlutoSwitch" destination="Ut8-JR-r5t" id="WUJ-ht-50g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nX6-c4-OZu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="314-pr-eb2" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2792.753623188406" y="144.64285714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdY-ZW-KaQ">
@@ -99,6 +160,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kau-Hx-Uee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="205.79710144927537" y="142.63392857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="H3D-aG-OJd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="sZa-lP-CMH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AAk-T7-aeZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P2p-wA-0VE">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="ntn-VV-tzd" kind="relationship" relationship="rootViewController" id="USd-yK-zzS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HhP-yt-2O7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882.608695652174" y="144.64285714285714"/>
         </scene>
     </scenes>
 </document>
